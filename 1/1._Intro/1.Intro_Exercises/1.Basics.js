@@ -10,7 +10,7 @@ var lastName = "Latif";// EXERCISE
 
 // console.log("My first name is", firstName, "and my last name is", lastName);
 
-// console.log(`My first name ${firstName}`);
+console.log(`My first name ${firstName}`);
 
 // --------------------------------------
 // Exercise 2 - Numbers and Strings
@@ -33,7 +33,7 @@ var newYear = +(year) + 1;
 var something = "123abc1";
 
 // console.log(parseInt(something));
-console.log(Number(something));
+// console.log(Number(something));
 
 
 // --------------------------------------
