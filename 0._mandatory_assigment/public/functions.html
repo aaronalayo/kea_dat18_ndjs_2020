@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    
+</head>
+<body>
+    <header>
+        <h1>Welcome to Aaron's Documentation</h1>
+        <h1>Functions</h1>
+    </header>
+    <section>
+        <nav>
+            <h2>Topics</h2>
+            <h3>Introduction</h3>
+            <ol>
+                <li><a href="basics">Basics</a></li>
+                <li><a href="strings">Strings</a></li>
+                <li><a href="objects">Objects</a></li>
+                <li><a href="arrays">Arrays</a></li>
+                <li><a href="functions">Functions</a></li>
+            </ol>
+            <h3>First API</h3>
+            <h3>JQuery</h3>
+        <a href="arrays" type="button" id="nav-button1" class="btn btn-primary">Previous</a>
+        <!-- <a href="" type="button" class="btn btn-primary">Next</a> -->
+        </nav>
+        
+        <article>
+<pre>
+hoisting
+addition(1,1);
+
+
+hoisting
+test = 1;
+var test;
+
+
+
+
+this doesnt work for let
+test = 1;
+let test;
+
+always need to be initialized in declaration
+this is not good
+const example;
+example = "this is how you write const";
+
+const example = "this is how you write const";
+
+console.log(example);
+
+function addition(a,b){
+    return a+b;
+}
+
+var sum = addition(2,5);
+
+console.log(addition(2,5));
+console.log(sum);
+
+function pokeMe(){
+    console.log("Meow");
+}
+
+pokeMe();
+
+function approachSomeone(someoneToPoke){
+    console.log("tip tap tip tap");
+    someoneToPoke();
+}
+
+approachSomeone(pokeMe);
+
+function introduce(name){
+    console.log("Hello my name is", name);
+
+}
+const introduce = function(name){
+    console.log("Hello my name is", name);
+}
+
+introduce("Aaron");
+
+const prepareIntroduction = function(introducerFunction, name){
+    console.log("Hmmmmm");
+    introducerFunction(name);
+}
+prepareIntroduction(introduce, "Peter");
+
+Arrow function where => means this and binds together
+const introduce = (name) => {
+    console.log("Hello my name is", name);
+}
+
+const prepareIntroduction = (introducerFunction, name) => {
+    console.log("Hmmmmm");
+    introducerFunction(name);
+}
+prepareIntroduction(introduce, "Peter");
+
+
+const aboutMe = (me) => {
+    console.log("My hobby is", me.hobby);
+}
+
+const me = {
+    hobby : "squash"
+}
+aboutMe(me);
+
+const ring = () =>{
+    console.log("Hello");
+}
+const callLater = {
+    toCall: ring
+};
+
+const callLater = {
+    toCall:() =>{
+        console.log("Hi again")
+    }
+};
+
+callLater.toCall();
+
+callLater.toCall();
+</pre>      
+
+        </article>
+      </section>
+      <!-- <footer>
+        <p>KEA - Dat18i</p>
+      </footer> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="./style.js"></script>
+
+</body>
+</html>

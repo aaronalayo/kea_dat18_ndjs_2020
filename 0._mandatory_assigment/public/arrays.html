@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <h1>Welcome to Aaron's Documentation</h1>
+        <h1>Arrays</h1>
+    </header>
+    <section>
+        <nav>
+            <h2>Topics</h2>
+            <h3>Introduction</h3>
+            <ol>
+                <li><a href="basics">Basics</a></li>
+                <li><a href="strings">Strings</a></li>
+                <li><a href="objects">Objects</a></li>
+                <li><a href="arrays">Arrays</a></li>
+                <li><a href="functions">Functions</a></li>
+              </ol>
+            <h3>First API</h3>
+            <h3>JQuery</h3>
+            <a href="objects" type="button" id="nav-button1" class="btn btn-primary">Previous</a>
+            <a href="functions" type="button" id="nav-button2" class="btn btn-primary">Next</a>
+          
+            
+        </nav>
+        
+        <article>
+            
+<pre>
+<b>Arrays, for loops</b>
+    
+<b>Array Positioning</b>
+
+var letters = ["a","b","c"];
+//show b in the console 
+    
+console.log(letters[1]);
+    
+<b>Array Positioning</b>
+    
+var friends = [];
+    
+var john = {
+    "name":"John"
+} 
+    
+var tom = {
+    "name": "Tom"
+}
+                    
+var mike = {
+    "name":"Mike"
+}
+    
+friends.push('John', 'Peter', 'Mike');
+    console.table(friends);
+    
+<b>Get the index of first occurance of that value.</b>
+    
+var significantMathNumbers = [0, 2.718, 3.14159, 1729]
+    
+<b>Fnd where the number 1729 is in the array programmatically</b> 
+    
+console.log(significantMathNumbers.indexOf(1729));
+
+<b>Inserting elements</b>
+    
+var diet = ["tomato", "cucumber", "rocolla", "kale"]
+    
+insert hamburger, soda and pizza between the elements rocolla and kale
+    
+diet.splice(3,0, "hamburger","soda", "pizza");
+console.log(diet);
+    
+<b>Removing an element</b>
+    
+Remove the LAST element of the array.
+delete diet[5];
+diet.splice(6)
+diet.pop();
+console.log(diet);
+    
+<b>Copy array</b>
+    
+<b>Copy it to a new array called dinnerTray.</b>
+
+array.slice(start, end)  // start and end are optional
+ 
+var dinnerTray = diet.slice();
+    
+var speadDinner = [...diet];
+console.log(...diet);
+    
+var cocaine = {weight: 10}
+    
+console.log(cocaine);
+    
+console.log(dinnerTray);
+      
+<b>For loop</b>
+    
+var letters = ["a","b","c", "d", "e", "f", "g", "h"];
+    
+log every second char in the array starting from b
+    
+for (var i = 1; i < letters.length; i+=2) {
+    console.log(letters[i]);
+}
+                    
+for (var i = 1; i < letters.length; i++) {
+    console.log(letters[i++]);
+} 
+      
+<b>Loop and if statement</b>
+    
+var numbers  = [5, 3, 2, 7, 11, 12, 0, -20, 6];
+    
+var discardedNumbers = [];
+    
+<b>Log the element if the number is above 6 or below 0
+else push them to the array discardedNumbers</b>
+    
+for (var i = 0; i < numbers.length; i++){
+    if (i < 0 || i > 6){
+        console.log(i.valueOf());
+    }else{
+        discardedNumbers.push(i);
+    }
+}
+console.log(discardedNumbers);  
+
+</pre>
+        </article>
+      </section>
+      <!-- <footer>
+        <p>KEA - Dat18i</p>
+      </footer> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="./style.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <h1>Welcome to Aaron's Documentation</h1>
+        <h1>Basics</h1>
+    </header>
+    <section>
+        <nav>
+            <h2>Topics</h2>
+            <h3>Introduction</h3>
+            <ol>
+                <li><a href="basics">Basics</a></li>
+                <li><a href="strings">Strings</a></li>
+                <li><a href="objects">Objects</a></li>
+                <li><a href="arrays">Arrays</a></li>
+                <li><a href="functions">Functions</a></li>
+            </ol>
+            <h3>First API</h3>
+            <h3>JQuery</h3>
+            
+                  <!-- <a href="objects" type="button" class="btn btn-primary">Previous</a> -->
+                  <a href="strings" type="button" id="nav-button2" class="btn btn-primary">Next</a>
+             
+        </nav>
+       
+        <article>
+            
+            
+<pre>   
+    <h2>Variables, strings, numbers, floats</h2>
+              
+            <h3>Console and variables :</h3>    
+firstName = "Aaron";
+var lastName = "ALAYO";
+console.log("My first name is", firstName, "and my last name is", lastName); 
+//shows in the console
+My first name is Aaron and my last name is ALAYO
+
+
+    <h3>Numbers and Strings:</h3>
+            <h6>Add the year plus the number</h6>
+            <h6>The result should be 2020</h6>
+var year = "2019";
+var number = 1;
+//first option
+var newYear = parseInt(year) + number;
+//second option
+var newYear = Number(year) + number;
+//thrid option
+var newYear = +(year) + 1;
+
+console.log(newYear);
+//shows in the console
+2020
+
+var something = "123abc1";
+
+console.log(parseInt(something));
+//shows in the console
+123
+console.log(Number(something));
+//shows in the console
+123
+       
+<h6>Add numbers from string to float</h6>
+
+var numberOne = "1.10";
+var numberTwo = "2.30";
+
+var newNumber = Number(numberOne) + Number(numberTwo);
+console.log(newNumber);
+//shows in the console
+3.4
+
+Add the numbers and the total with 2 decimals
+
+var numberOne = "1.10";
+var numberTwo = "2.30";
+
+var addedNumbers = (parseFloat(numberOne) + parseFloat(numberTwo));
+console.log(parseFloat(addedNumbers).toFixed(2));
+
+//shows in the console
+3.40
+
+
+<h6>Decimals and average</h6>
+
+var one = 10;
+var two = 45;
+var three = 98;
+
+var avrg = ((one + two + three)/3).toFixed(5);
+
+console.log(avrg);
+// Shows in the console the avg. with 5 decimals
+51.00000
+
+</pre>
+        </article>
+      
+    
+    </section>
+      
+      
+    <!-- <div class="footer">
+        <p>KEA - Dat18i</p>
+      </div> -->
+     
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="./style.js"></script>
+
+</body>
+</html>
