@@ -33,22 +33,26 @@
         
         <article>
 <pre>
-hoisting
-addition(1,1);
 
+<b>hoisting : In JavaScript, a variable can be declared after it has been used.
+In other words; a variable can be used before it has been declared.</b>
 
-hoisting
 test = 1;
+x = 4
 var test;
+var x;
+
+console.log(test+x)
+//shows in the console
+5
 
 
 
-
-this doesnt work for let
+<b>this doesnt work for let</b>
 test = 1;
 let test;
 
-always need to be initialized in declaration
+<b>always need to be initialized in declaration</b>
 this is not good
 const example;
 example = "this is how you write const";
@@ -56,6 +60,14 @@ example = "this is how you write const";
 const example = "this is how you write const";
 
 console.log(example);
+//shows in the console
+
+const example;
+      ^^^^^^^
+
+SyntaxError: Missing initializer in const declaration
+
+
 
 function addition(a,b){
     return a+b;
@@ -64,13 +76,21 @@ function addition(a,b){
 var sum = addition(2,5);
 
 console.log(addition(2,5));
+//shows in the console
+7
+
 console.log(sum);
+//shows in the console
+7
 
 function pokeMe(){
     console.log("Meow");
 }
 
 pokeMe();
+//shows in the console
+Meow
+
 
 function approachSomeone(someoneToPoke){
     console.log("tip tap tip tap");
@@ -78,24 +98,35 @@ function approachSomeone(someoneToPoke){
 }
 
 approachSomeone(pokeMe);
+//shows in the console
+tip tap tip tap
+Meow
 
 function introduce(name){
     console.log("Hello my name is", name);
-
 }
+introduce("Aaron");
+//shows in the console
+Hello my name is Aaron
+
 const introduce = function(name){
     console.log("Hello my name is", name);
 }
-
 introduce("Aaron");
+//shows in the console
+Hello my name is Aaron
+
 
 const prepareIntroduction = function(introducerFunction, name){
     console.log("Hmmmmm");
     introducerFunction(name);
 }
 prepareIntroduction(introduce, "Peter");
+//shows in the console
+Hmmmmm
+Hello my name is Peter
 
-Arrow function where => means this and binds together
+<b>Arrow function where => means this and binds together</b>
 const introduce = (name) => {
     console.log("Hello my name is", name);
 }
@@ -105,7 +136,9 @@ const prepareIntroduction = (introducerFunction, name) => {
     introducerFunction(name);
 }
 prepareIntroduction(introduce, "Peter");
-
+//shows in the console
+Hmmmmm
+Hello my name is Peter
 
 const aboutMe = (me) => {
     console.log("My hobby is", me.hobby);

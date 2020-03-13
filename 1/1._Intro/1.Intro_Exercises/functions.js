@@ -60,7 +60,7 @@ const prepareIntroduction = function(introducerFunction, name){
 }
 prepareIntroduction(introduce, "Peter");
 
-Arrow function where => means this and binds together
+//Arrow function where => means this and binds together
 const introduce = (name) => {
     console.log("Hello my name is", name);
 }
