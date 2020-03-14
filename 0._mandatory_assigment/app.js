@@ -45,8 +45,15 @@ app.get("/objects", (req, res) => {
     return res.sendFile(__dirname + "/public/objects.html");
 });
 
+app.get("/first_api", (req, res) => {
 
+    return res.sendFile(__dirname + "/public/first_api.html");
+});
 
+app.get("/jquery", (req, res) => {
+
+    return res.sendFile(__dirname + "/public/jquery.html");
+});
 
 const port = process.env.PORT ? process.env.PORT : 3000;
 

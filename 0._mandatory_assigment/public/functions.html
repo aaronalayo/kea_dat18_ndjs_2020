@@ -23,10 +23,15 @@
                 <li><a href="strings">Strings</a></li>
                 <li><a href="objects">Objects</a></li>
                 <li><a href="arrays">Arrays</a></li>
-                <li><a href="functions">Functions</a></li>
             </ol>
             <h3>First API</h3>
-            <h3>JQuery</h3>
+            <ol>
+                <li><a href ="first_api">First API</a></li>
+            </ol>
+            <h3>jQuery</h3>
+            <ol>
+                <li><a href ="jquery">jQuery</a></li>
+            </ol>
         <a href="arrays" type="button" id="nav-button1" class="btn btn-primary">Previous</a>
         <!-- <a href="" type="button" class="btn btn-primary">Next</a> -->
         </nav>
@@ -117,15 +122,6 @@ introduce("Aaron");
 Hello my name is Aaron
 
 
-const prepareIntroduction = function(introducerFunction, name){
-    console.log("Hmmmmm");
-    introducerFunction(name);
-}
-prepareIntroduction(introduce, "Peter");
-//shows in the console
-Hmmmmm
-Hello my name is Peter
-
 <b>Arrow function where => means this and binds together</b>
 const introduce = (name) => {
     console.log("Hello my name is", name);
@@ -136,6 +132,7 @@ const prepareIntroduction = (introducerFunction, name) => {
     introducerFunction(name);
 }
 prepareIntroduction(introduce, "Peter");
+
 //shows in the console
 Hmmmmm
 Hello my name is Peter
@@ -149,22 +146,24 @@ const me = {
 }
 aboutMe(me);
 
-const ring = () =>{
-    console.log("Hello");
-}
-const callLater = {
-    toCall: ring
-};
+//shows in the console
+My hobby is squash
+
+
 
 const callLater = {
-    toCall:() =>{
-        console.log("Hi again")
+    toCall: () => {
+        console.log("ring ring ring banana phone");
     }
 };
 
-callLater.toCall();
 
 callLater.toCall();
+
+console.log(callLater);
+
+
+
 </pre>      
 
         </article>

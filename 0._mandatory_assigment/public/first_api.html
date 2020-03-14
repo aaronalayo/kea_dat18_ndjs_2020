@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <h1>Welcome to Aaron's Documentation</h1>
+        <h1>First API</h1>
+    </header>
+    <section>
+        <nav>
+            <h2>Topics</h2>
+            <h3>Introduction</h3>
+            <ol>
+                <li><a href="basics">Basics</a></li>
+                <li><a href="strings">Strings</a></li>
+                <li><a href="objects">Objects</a></li>
+                <li><a href="arrays">Arrays</a></li>
+                <li><a href="functions">Functions</a></li>
+            </ol>
+          
+            <h3>jQuery</h3>
+            <ol>
+                <li><a href ="jquery">jQuery</a></li>
+            </ol>
+           
+
+            
+                  <a href="functions" type="button" class="btn btn-primary">Previous</a>
+                  <a href="jquery" type="button" id="nav-button2" class="btn btn-primary">Next</a>
+             
+        </nav>
+       
+        <article>
+            
+            
+<pre>   
+    <b>First API</b>
+    
+    <b>Steps to setup the application:</b>
+
+    - Open a terminal and run command: <b>cd</b> to navigate to the folder that will contain the application. 
+    Ex: cd /kea/node
+    - Run command: <b>ls</b> to show what the folder contains 
+    - Create a folder with the name of the application that will contain the application, the files and modules.
+    Ex: <b>mkdir</b> nodejs_mandatory_assigment.
+    - Once the folder created <b>cd</b> into the folder. 
+    Ex: <b>cd /nodejs_mandatory_assigment</b>
+    - Optional run <b>ls</b> to see its content. So far it is empty.
+    - Now inside the folder, start creating the application.
+    - Run <b>npm init</b> to create a <b>package.json</b> that will contain all the information about the application.
+    Just follow the steps to fill the information contained in the package.
+
+    Still in the application folder, Install modules:
+    For example, express, nodemon, budo and cross-env by running the following commands:
+    npm install express
+    npm install nodemon
+    npm install cross-env
+    Now all the dependencies needed for the application will be installed and referenced in the <b>package.json</b>.
+    
+    <b>package.json should look like this</b>
+
+    {
+        "name": "nodejs_mandatory_assigment",
+        "version": "1.0.0",
+        "description": "Website that contains documentation of the learning of NodeJS",
+        "main": "app.js",
+        "scripts": {
+          "start": "cross-env PORT=8080 node app.js",
+          "start-dev": "cross-env PORT=3000 nodemon app.js",
+          "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "keywords": [
+          "doc",
+          "documentation",
+          "learning",
+          "assignment"
+        ],
+        "author": "Aaron ALAYO",
+        "license": "ISC",
+        "dependencies": {
+          "budo": "^11.6.3",
+          "cross-env": "^7.0.2",
+          "express": "^4.17.1",
+          "nodemon": "^2.0.2"
+        }
+      }
+<b>Modules:</b>
+
+<b>- Express</b>
+Express is a minimal and flexible Node.js web application framework 
+that provides a robust set of features for web and mobile applications.
+
+    
+</pre>
+        </article>
+      
+    
+    </section>
+      
+      
+    <!-- <div class="footer">
+        <p>KEA - Dat18i</p>
+      </div> -->
+     
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="./style.js"></script>
+
+</body>
+</html>
