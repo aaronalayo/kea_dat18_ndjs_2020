@@ -19,24 +19,19 @@
         <nav>
             <h2>Topics</h2>
             <ol>
+                <li><a href="variables">Variables</a></li>
                 <li><a href="basics">Basics</a></li>
                 <li><a href="strings">Strings</a></li>
                 <li><a href="objects">Objects</a></li>
                 <li><a href="arrays">Arrays</a></li>
                 <li><a href="functions">Functions</a></li>
-            </ol>
-            <h2>First API</h2>
-            <ol>
                 <li><a href="first_api">First API</a></li>
-            </ol>
-            <h2>jQuery</h2>
-            <ol>
                 <li><a href="jquery">jQuery</a></li>
             </ol>
 
             
                   <a href="jquery" type="button" id="nav-button1" class="btn btn-primary">previous</a>
-                  <!-- <a href="" type="button" id="nav-button2" class="btn btn-primary">next</a> -->
+                  <a href="variables" type="button" id="nav-button2" class="btn btn-primary">next</a>
              
         </nav>
        
@@ -44,6 +39,7 @@
             
             
 <pre>
+<b>HTTP Requests and Express Routing</b>
 After creating the file app.js, create a variable to instsantiate express:
 
 const express = require("express");
@@ -68,6 +64,37 @@ This method is called as a middleware in the application using the code:
 // parse application/json and submit the form
 app.use(express.json());
 
+<b>req and res parameters</b>
+
+app.get('/user/:id', function(req, res){
+    res.send('user ' + req.params.id);
+  });
+
+req is an object containing information about the HTTP request that raised the event. 
+In response to req, you use res to send back the desired HTTP response.
+
+Those parameters can be named anything. For example:
+
+app.get('/user/:id', function(request, response){
+    response.send('user ' + request.params.id);
+  });
+
+
+<b>Response methods</b>
+The methods on the response object (res) in the following table can send a response to the client, and terminate 
+the request-response cycle. If none of these methods are called from a route handler, the client request will be left hanging.
+
+<b>Method</b>	              
+res.download()	      Prompt a file to be downloaded.
+res.end()	      End the response process.
+res.json()	      Send a JSON response.
+res.jsonp()	      Send a JSON response with JSONP support.
+res.redirect()	      Redirect a request.
+res.render()	      Render a view template.
+res.send()	      Send a response of various types.
+res.sendFile()	      Send a file as an octet stream.
+res.sendStatus()      Set the response status code and send its string representation as the response body.
+
 Now create the object that will be parsed:
 
 For example:
@@ -78,11 +105,17 @@ let devices = [
     {id: 2, type: 'pc'}
 ];
 
-
-
 <b>GET</b>
 The <b>GET</b> method is used to retrieve information from the given server using a given URI. 
 Requests using GET should only retrieve data and should have no other effect on the data.
+
+app.get("/devices", (req, res) => {
+    return res.send({response: devices});
+});
+
+Example:
+
+http://localhost:3000/devices
 
 In order to get proper routing a path must be defined so the app knows where to find the html, css, videos and images files. 
 They are referred also as the static files.
@@ -95,19 +128,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('public', path.join(__dirname, 'public'));</b>
 
+Example:
 
-app.get("/devices", (req, res) => {
-    return res.send({response: devices});
-});
+app.get("/basics", (req, res) => {
 
-Objects can be send too as a GET request:
-
-app.get("/aboutMe", (req, res) => {
-    res.send({
-        name : "Aaron",
-        lastname : "ALAYO",
-        age: 37
-    })
+    return res.sendFile(__dirname + "/public/basics.html");
 });
 
 <b>POST</b>
@@ -115,6 +140,9 @@ app.get("/aboutMe", (req, res) => {
 
 A <b>POST</b> request is used to send data to the server, for example, customer information, 
 file upload, etc. Using HTML forms.
+
+To use the <b>POST</b> properly an application like Postman is necessary to test the request.
+
 
 app.post("/devices",(req, res) => {
 
@@ -144,6 +172,7 @@ app.put('/devices/:id', function (req, res) {
 
     return res.send({response: newDevice})
   });
+
 <b>DELETE</b>
 
 The method <b>DELETE</b> removes all or just one of the current representations of the target resource given by URI.
@@ -155,20 +184,12 @@ app.delete("/devices/:id", (req, res) => {
     return res.send({response : devices})
 });
 
-res.send
-res.sendFile
-function(req, res)
 
 </pre>
         </article>
       
     
     </section>
-      
-      
-    <!-- <div class="footer">
-        <p>KEA - Dat18i</p>
-      </div> -->
      
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="./style.js"></script>

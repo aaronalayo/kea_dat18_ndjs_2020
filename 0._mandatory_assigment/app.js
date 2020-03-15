@@ -68,6 +68,21 @@ app.get("/variables", (req, res) => {
 });
 
 
+let devices = [
+    {id: 0, type:'mobile'}, 
+    {id: 1, type: 'ipad'},
+    {id: 2, type: 'pc'}
+];
+
+let nextDeviceId = 3;
+
+app.get("/devices", (req, res) => {
+
+   
+    return res.send({response: devices});
+});
+
+
 const port = process.env.PORT ? process.env.PORT : 3000;
 
 const server = app.listen(port, (error) => {
