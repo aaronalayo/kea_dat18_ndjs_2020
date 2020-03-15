@@ -67,12 +67,18 @@ app.get("/variables", (req, res) => {
     return res.sendFile(__dirname + "/public/variables.html");
 });
 
+app.get("/tools", (req, res) => {
+
+    return res.sendFile(__dirname + "/public/tools.html");
+});
+
 
 let devices = [
-    {id: 0, type:'mobile'}, 
-    {id: 1, type: 'ipad'},
-    {id: 2, type: 'pc'}
+    {id: 1, type:'mobile'}, 
+    {id: 2, type: 'ipad'},
+    {id: 3, type: 'pc'}
 ];
+
 
 let nextDeviceId = 3;
 
@@ -82,6 +88,11 @@ app.get("/devices", (req, res) => {
     return res.send({response: devices});
 });
 
+app.get("/devices/:id", (req, res) => {
+    const device = devices.find(device => device.id === Number(req.params.id));
+    return res.send({response: device});
+
+});
 
 const port = process.env.PORT ? process.env.PORT : 3000;
 

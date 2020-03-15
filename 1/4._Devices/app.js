@@ -7,12 +7,12 @@ app.use(express.urlencoded({extended:false})); //to get response from
 app.use(express.json());//to sumit form
 
 let devices = [
-    {id: 0, type:'mobile'}, 
-    {id: 1, type: 'ipad'},
-    {id: 2, type: 'pc'}
+    {id: 1, type:'mobile'}, 
+    {id: 2, type: 'ipad'},
+    {id: 3, type: 'pc'}
 ];
 
-let nextDeviceId = 3;
+
 
 
 app.get("/", (req, res) => {
@@ -28,7 +28,7 @@ app.get("/devices", (req, res) => {
 });
 
 app.get("/devices/:id", (req, res) => {
-    const device = device.find(device => device.id === Number(req.params.id));
+    const device = devices.find(device => device.id === Number(req.params.id));
     return res.send({response: device});
 
 });

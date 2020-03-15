@@ -27,11 +27,13 @@
                 <li><a href="functions">Functions</a></li>
                 <li><a href="first_api">First API</a></li>
                 <li><a href="jquery">jQuery</a></li>
+                <li><a href="tools">Tools</a></li>
+
             </ol>
 
             
                   <a href="jquery" type="button" id="nav-button1" class="btn btn-primary">previous</a>
-                  <a href="variables" type="button" id="nav-button2" class="btn btn-primary">next</a>
+                  <a href="tools" type="button" id="nav-button2" class="btn btn-primary">next</a>
              
         </nav>
        
@@ -109,15 +111,31 @@ let devices = [
 The <b>GET</b> method is used to retrieve information from the given server using a given URI. 
 Requests using GET should only retrieve data and should have no other effect on the data.
 
+Here all what contains the object devices:
+
 app.get("/devices", (req, res) => {
     return res.send({response: devices});
 });
 
-Example:
+If we open a browser at this address the get method returns the object:
 
 http://localhost:3000/devices
 
-In order to get proper routing a path must be defined so the app knows where to find the html, css, videos and images files. 
+Also the object devices can be accesed by id:
+
+app.get("/devices/:id", (req, res) => {
+    const device = device.find(device => device.id === Number(req.params.id));
+    return res.send({response: device});
+
+});
+
+For example the device with id 1:
+
+http://localhost:3000/devices/1
+
+<b>Routing</b>
+
+In order to get proper routing, a path must be defined so the app knows where to find the html, css, videos and images files. 
 They are referred also as the static files.
 Usually the these files are placed in a folder called <b>public</b>.
 Optional videos and images can be in there respectives folders.
@@ -135,13 +153,15 @@ app.get("/basics", (req, res) => {
     return res.sendFile(__dirname + "/public/basics.html");
 });
 
+
+
 <b>POST</b>
 
 
 A <b>POST</b> request is used to send data to the server, for example, customer information, 
 file upload, etc. Using HTML forms.
 
-To use the <b>POST</b> properly an application like Postman is necessary to test the request.
+To use the <b>POST</b> properly an application like <b>Postman</b> is necessary to test the request.
 
 
 app.post("/devices",(req, res) => {
