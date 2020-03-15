@@ -7,6 +7,8 @@ app.use(express.urlencoded({extended:false})); //to get response fromm
 // parse application/json
 app.use(express.json());//to sumit form
 
+app.use(express.static('public'));
+app.use(express.static('videos'));
 
 console.log("This is from the enviroment variables",);
 
@@ -15,8 +17,7 @@ app.get("/video/:videoid", (req, res) => {
     return res.sendFile(__dirname + "/public/video.html");
 });
 
-app.use(express.static('public'));
-app.use(express.static('video'));
+
 
 
 const port = process.env.PORT ? process.env.PORT : 3000;
