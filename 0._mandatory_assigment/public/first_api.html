@@ -48,7 +48,7 @@ REST APIs are resource-based interfaces. On the web this means that data resourc
     Ex: cd /kea/node
     - Run command: <b>ls</b> to show what the folder contains 
     - Create a folder with the name of the application that will contain the application, the files and modules.
-    Ex: <b>mkdir</b> nodejs_mandatory_assigment.
+    Ex: <b>mkdir</b> 0._mandatory_assigment.
     - Once the folder created <b>cd</b> into the folder. 
     Ex: <b>cd /nodejs_mandatory_assigment</b>
     - Optional run <b>ls</b> to see its content. So far it is empty.
@@ -62,7 +62,7 @@ REST APIs are resource-based interfaces. On the web this means that data resourc
     npm install nodemon
     npm install cross-env
 
-    Now all the dependencies needed for the application will be installed and referenced in the <b>package.json</b>.
+    Now all the modules needed for the application will be installed and referenced in the <b>package.json</b>.
     
     <b>package.json should look like this</b>
 
@@ -90,6 +90,12 @@ REST APIs are resource-based interfaces. On the web this means that data resourc
         "nodemon": "^2.0.2"
       }
     }
+
+There are also two other items that are added to the application folder.
+The folder <b>node_modules</b> which contains all the modules used by the application.
+And <b>package-lock.json</b> is automatically generated for any operations where npm modifies either 
+the node_modules tree, or package.json. It describes the exact tree that was generated, such 
+that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.
 
 <b>Modules:</b>
 All these modules can be installed with the command:
@@ -130,6 +136,19 @@ request('http://www.google.com', function (error, response, body) {
   console.log('body:', body); // Print the HTML for the Google homepage.
 });
 
+<b>Scripts</b>
+
+Inside <b>package.json</b> some scripts can be configure that will be executed when running the application.
+
+<b>"scripts": {
+  "start": "cross-env PORT=80 node app.js",
+  "start-dev": "cross-env PORT=3000 nodemon app.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},</b>
+
+To start the application just run in the terminal:
+
+<b>npm start</b> for the client side or <b>npm start-dev</b> for the server side.
 
 <b>The app.js file</b>
 
