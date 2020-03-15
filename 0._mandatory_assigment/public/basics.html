@@ -10,30 +10,35 @@
 </head>
 <body>
     <header>
+        <a href="index.html" type="button" id="index-button" class="btn btn-primary">index</a>
+
         <h1>Welcome to Aaron's Documentation</h1>
         <h1>Basics</h1>
     </header>
     <section>
         <nav>
             <h2>Topics</h2>
-            <h3>Introduction</h3>
             <ol>
                 <li><a href="strings">Strings</a></li>
                 <li><a href="objects">Objects</a></li>
                 <li><a href="arrays">Arrays</a></li>
                 <li><a href="functions">Functions</a></li>
             </ol>
-            <h3>First API</h3>
+            <h2>First API</h2>
             <ol>
-                <li><a href ="first_api">First API</a></li>
+                <li><a href="first_api">First API</a></li>
             </ol>
-            <h3>jQuery</h3>
+            <h2>jQuery</h2>
             <ol>
-                <li><a href ="jquery">jQuery</a></li>
+                <li><a href="jquery">jQuery</a></li>
+            </ol>
+            <h2>HTTP Request</h2>
+            <ol>
+                <li><a href="httprequests">HTTP Requests</a></li>
             </ol>
             
-                  <a href="index" type="button" class="btn btn-primary">Previous</a>
-                  <a href="strings" type="button" id="nav-button2" class="btn btn-primary">Next</a>
+                  <a href="index" type="button" id="nav-button1" class="btn btn-primary">previous</a>
+                  <a href="strings" type="button" id="nav-button2" class="btn btn-primary">next</a>
              
         </nav>
        
@@ -41,9 +46,9 @@
             
             
 <pre>   
-    <h2>Variables, strings, numbers, floats</h2>
+<b>Variables, strings, numbers, floats</b>
               
-            <h3>Console and variables :</h3>    
+<b>Console and variables :</b>    
 firstName = "Aaron";
 var lastName = "ALAYO";
 console.log("My first name is", firstName, "and my last name is", lastName); 
@@ -51,9 +56,11 @@ console.log("My first name is", firstName, "and my last name is", lastName);
 My first name is Aaron and my last name is ALAYO
 
 
-    <h3>Numbers and Strings:</h3>
-            <h6>Add the year plus the number</h6>
-            <h6>The result should be 2020</h6>
+<b>Numbers and Strings:</b>
+
+<b>Add the year plus the number</b>
+<b>The result should be 2020</b>
+
 var year = "2019";
 var number = 1;
 //first option
@@ -76,7 +83,7 @@ console.log(Number(something));
 //shows in the console
 123
        
-<h6>Add numbers from string to float</h6>
+<b>Add numbers from string to float</b>
 
 var numberOne = "1.10";
 var numberTwo = "2.30";
@@ -86,7 +93,7 @@ console.log(newNumber);
 //shows in the console
 3.4
 
-Add the numbers and the total with 2 decimals
+<b>Add the numbers and the total with 2 decimals</b>
 
 var numberOne = "1.10";
 var numberTwo = "2.30";
@@ -98,7 +105,7 @@ console.log(parseFloat(addedNumbers).toFixed(2));
 3.40
 
 
-<h6>Decimals and average</h6>
+<b>Decimals and average</b>
 
 var one = 10;
 var two = 45;
@@ -110,6 +117,37 @@ console.log(avrg);
 // Shows in the console the avg. with 5 decimals
 51.00000
 
+<b>hoisting : In JavaScript, a variable can be declared after it has been used.
+In other words; a variable can be used before it has been declared.</b>
+    
+test = 1;
+x = 4
+var test;
+var x;
+    
+console.log(test+x)
+//shows in the console
+5
+    
+<b>this doesnt work for let</b>
+test = 1;
+let test;
+    
+<b>always need to be initialized in declaration</b>
+this is not good
+const example;
+example = "this is how you write const";
+    
+const example = "this is how you write const";
+    
+console.log(example);
+//shows in the console
+    
+const example;
+      ^^^^^^^
+    
+SyntaxError: Missing initializer in const declaration
+    
 </pre>
         </article>
       

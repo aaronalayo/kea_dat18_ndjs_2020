@@ -2,52 +2,7 @@
     box-sizing: border-box;
   }
   
-/* 
-  body{
-      font-family: Arial, Helvetica, sans-serif;
 
-      height: 100%;
-      width: 100%;
-      overflow-y: hidden;
-
-  }
-
-
-  /* Style the header */
-  /* header {
-    background-color: #9bdaf8;
-    padding: 20px;
-    text-align: center;
-    font-size: 35px;
-    color: white;
-  } */
-  
-  /* Create two columns/boxes that floats next to each other */
-  /* nav {
-    float: left;
-    width: 15%;
-    height: 810px; 
-    background: #ccc3;
-    padding: 20px;
-    
-
-  } */
-  
-  /* Style the list inside the menu */
-  /* nav ul {
-    list-style-type: none;
-    padding: 0;
-  } */
-  
-  /* article {
-    float: left;
-    padding: 20px;
-    width: 85%;
-    background-color: #f1f1f1;
-    height: 810px; 
-    overflow-y: scroll;
-    overflow-x:hidden;  
-  } */
 
   /* Clear floats after the columns */
   section:after {
@@ -56,16 +11,6 @@
     clear: both;
   }
   
-  /* Style the footer */
-  /* .footer {
-    
-    background-color: #04afff;
-    padding: 5px;
-    text-align: center;
-    color: white;
-    position: initial;
-
-  } */
   
   /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
   @media (max-width: 650px) {
@@ -86,17 +31,3 @@
     padding-bottom: 10px;
     max-height: 810px;
   }
-  /* .footer {
-    background-color:blue;
-    padding: 10px;
-    text-align: center;
-    position: sticky;
-
-  } */
-  /* button {
-    size: 10px;
-    position: relative;
-    right:    20px;
-    bottom:   20px;
-    
-  } */

@@ -18,7 +18,7 @@ app.get("/aboutMe", (req, res) => {
         lastname : "ALAYO",
         age: 37
     })
-})
+});
 // define something on the path /aboutThisWebsite 
 // that returns a JSON representation of the website
 app.get("/aboutThisWebsite", (req, res) =>{

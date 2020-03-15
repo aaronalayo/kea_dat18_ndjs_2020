@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Requests</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <a href="index.html" type="button" id="index-button" class="btn btn-primary">index</a>
+
+        <h1>Welcome to Aaron's Documentation</h1>
+        <h1>HTTP Requests</h1>
+    </header>
+    <section>
+        <nav>
+            <h2>Topics</h2>
+            <ol>
+                <li><a href="basics">Basics</a></li>
+                <li><a href="strings">Strings</a></li>
+                <li><a href="objects">Objects</a></li>
+                <li><a href="arrays">Arrays</a></li>
+                <li><a href="functions">Functions</a></li>
+            </ol>
+            <h2>First API</h2>
+            <ol>
+                <li><a href="first_api">First API</a></li>
+            </ol>
+            <h2>jQuery</h2>
+            <ol>
+                <li><a href="jquery">jQuery</a></li>
+            </ol>
+
+            
+                  <a href="jquery" type="button" id="nav-button1" class="btn btn-primary">previous</a>
+                  <!-- <a href="" type="button" id="nav-button2" class="btn btn-primary">next</a> -->
+             
+        </nav>
+       
+        <article>
+            
+            
+<pre>
+After creating the file app.js, create a variable to instsantiate express:
+
+const express = require("express");
+const app = express();
+
+Then with the method <b>use</b> app.js will send and parse the data to the server.
+
+<b>express.json()</b> and <b>express.urlencoded()</b> are needed for POST and PUT requests, 
+because in both these requests data is sent (in the form of some data object) 
+to the server and is asking the server to accept or store that data (object), 
+which is enclosed in the body (i.e. req.body) of that (POST or PUT) Request
+
+<b>express.urlencoded()</b> is a method builtin in express to recognize the incoming Request Object 
+as strings or arrays. This method is called as a middleware in the application using the code: 
+
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }));
+
+<b>express.json()</b> is a method builtin in express to recognize the incoming Request Object as a JSON Object. 
+This method is called as a middleware in the application using the code: 
+
+// parse application/json and submit the form
+app.use(express.json());
+
+Now create the object that will be parsed:
+
+For example:
+
+let devices = [
+    {id: 0, type:'mobile'}, 
+    {id: 1, type: 'ipad'},
+    {id: 2, type: 'pc'}
+];
+
+
+
+<b>GET</b>
+The <b>GET</b> method is used to retrieve information from the given server using a given URI. 
+Requests using GET should only retrieve data and should have no other effect on the data.
+
+In order to get proper routing a path must be defined so the app knows where to find the html, css, videos and images files. 
+They are referred also as the static files.
+Usually the these files are placed in a folder called <b>public</b>.
+Optional videos and images can be in there respectives folders.
+
+<b>var path = require('path');
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('public', path.join(__dirname, 'public'));</b>
+
+
+app.get("/devices", (req, res) => {
+    return res.send({response: devices});
+});
+
+Objects can be send too as a GET request:
+
+app.get("/aboutMe", (req, res) => {
+    res.send({
+        name : "Aaron",
+        lastname : "ALAYO",
+        age: 37
+    })
+});
+
+<b>POST</b>
+
+
+A <b>POST</b> request is used to send data to the server, for example, customer information, 
+file upload, etc. Using HTML forms.
+
+app.post("/devices",(req, res) => {
+
+let newDevice = req.body;
+if(!newDevice.type){
+    return res.status(400).send({response: "Missing the device type"});
+}
+newDevice.id = nextDeviceId++;
+devices.push(newDevice)
+   
+console.log(devices)
+return res.send({response: newDevice });
+});
+
+<b>PUT</b>
+The method <b>PUT</b> replaces all the current representations of the target resource with the uploaded content.
+
+app.put('/devices/:id', function (req, res) {
+    
+    const foundIndex = devices.findIndex(device => device.id === Number(req.params.id));
+    delete req.body.id;
+    const newDevice = {...devices[foundIndex],...req.body}; //spread to new object
+
+    devices[foundIndex] = newDevice;
+
+    console.log(devices)
+
+    return res.send({response: newDevice})
+  });
+<b>DELETE</b>
+
+The method <b>DELETE</b> removes all or just one of the current representations of the target resource given by URI.
+
+app.delete("/devices/:id", (req, res) => {
+    devices = devices.filter(device => device.id != req.params.id)
+    
+    console.log(devices)
+    return res.send({response : devices})
+});
+
+res.send
+res.sendFile
+function(req, res)
+
+</pre>
+        </article>
+      
+    
+    </section>
+      
+      
+    <!-- <div class="footer">
+        <p>KEA - Dat18i</p>
+      </div> -->
+     
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="./style.js"></script>
+
+</body>
+</html>

@@ -2,7 +2,7 @@ const express = require("express")//instantiate;
 
 const app = express();
 
-app.use(express.urlencoded({extended:false})); //to get response fromm
+app.use(express.urlencoded({extended:false})); //to get response from
 
 app.use(express.json());//to sumit form
 

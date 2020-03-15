@@ -11,69 +11,38 @@
 </head>
 <body>
     <header>
+        <a href="index.html" type="button" id="index-button" class="btn btn-primary">index</a>
+
         <h1>Welcome to Aaron's Documentation</h1>
         <h1>Functions</h1>
     </header>
     <section>
         <nav>
             <h2>Topics</h2>
-            <h3>Introduction</h3>
             <ol>
                 <li><a href="basics">Basics</a></li>
                 <li><a href="strings">Strings</a></li>
                 <li><a href="objects">Objects</a></li>
                 <li><a href="arrays">Arrays</a></li>
             </ol>
-            <h3>First API</h3>
+            <h2>First API</h2>
             <ol>
-                <li><a href ="first_api">First API</a></li>
+                <li><a href="first_api">First API</a></li>
             </ol>
-            <h3>jQuery</h3>
+            <h2>jQuery</h2>
             <ol>
-                <li><a href ="jquery">jQuery</a></li>
+                <li><a href="jquery">jQuery</a></li>
             </ol>
-        <a href="arrays" type="button" id="nav-button1" class="btn btn-primary">Previous</a>
-        <!-- <a href="" type="button" class="btn btn-primary">Next</a> -->
+            <h2>HTTP Request</h2>
+            <ol>
+                <li><a href="httprequests">HTTP Requests</a></li>
+            </ol>
+        <a href="arrays" type="button" id="nav-button1" class="btn btn-primary">previous</a>
+        <a href="first_api" type="button" id="nav-button2" class="btn btn-primary">next</a>
         </nav>
         
         <article>
 <pre>
-
-<b>hoisting : In JavaScript, a variable can be declared after it has been used.
-In other words; a variable can be used before it has been declared.</b>
-
-test = 1;
-x = 4
-var test;
-var x;
-
-console.log(test+x)
-//shows in the console
-5
-
-
-
-<b>this doesnt work for let</b>
-test = 1;
-let test;
-
-<b>always need to be initialized in declaration</b>
-this is not good
-const example;
-example = "this is how you write const";
-
-const example = "this is how you write const";
-
-console.log(example);
-//shows in the console
-
-const example;
-      ^^^^^^^
-
-SyntaxError: Missing initializer in const declaration
-
-
-
 function addition(a,b){
     return a+b;
 }

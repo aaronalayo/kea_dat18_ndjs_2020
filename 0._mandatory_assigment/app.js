@@ -8,7 +8,9 @@ app.use(express.urlencoded({extended:false})); //to get response fromm
 app.use(express.json());//to sumit form
 
 var path = require('path'); 
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.set('public', path.join(__dirname, 'public'));
 
 app.get("/", (req, res) => {
@@ -54,6 +56,17 @@ app.get("/jquery", (req, res) => {
 
     return res.sendFile(__dirname + "/public/jquery.html");
 });
+
+app.get("/httprequests", (req, res) => {
+
+    return res.sendFile(__dirname + "/public/httprequests.html");
+});
+
+app.get("/variables", (req, res) => {
+
+    return res.sendFile(__dirname + "/public/variables.html");
+});
+
 
 const port = process.env.PORT ? process.env.PORT : 3000;
 

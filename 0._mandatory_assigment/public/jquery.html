@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basics</title>
+    <title>jQuery</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
 <body>
     <header>
+      <a href="index.html" type="button" id="index-button" class="btn btn-primary">index</a>
+
         <h1>Welcome to Aaron's Documentation</h1>
         <h1>jQuery</h1>
     </header>
     <section>
         <nav>
             <h2>Topics</h2>
-            <h3>Introduction</h3>
             <ol>
                 <li><a href="basics">Basics</a></li>
                 <li><a href="strings">Strings</a></li>
@@ -24,18 +25,17 @@
                 <li><a href="arrays">Arrays</a></li>
                 <li><a href="functions">Functions</a></li>
             </ol>
-            <h3>First API</h3>
+            <h2>First API</h2>
             <ol>
-                <li><a href ="first_api">First API</a></li>
+                <li><a href="first_api">First API</a></li>
             </ol>
-            <h3>jQuery</h3>
+            <h2>HTTP Request</h2>
             <ol>
-                <li><a href ="jquery">jQuery</a></li>
+                <li><a href="httprequests">HTTP Request</a></li>
             </ol>
-
             
-                  <a href="first_api" type="button" class="btn btn-primary">Previous</a>
-                  <a href="jquery" type="button" id="nav-button2" class="btn btn-primary">Next</a>
+                  <a href="first_api" type="button" id="nav-button1" class="btn btn-primary">previous</a>
+                  <a href="httprequests" type="button" id="nav-button2" class="btn btn-primary">next</a>
              
         </nav>
        
@@ -54,6 +54,18 @@ Effects and animations
 AJAX
 Utilities
 
+<b>How to use</b>
+
+In order to use jQuery properly a script must be pasted at the end of the body of every html file
+by looking for it on google so it always be the lastest version.
+
+<b>script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script></b>
+
+Then we need to create a file file.js that will contain all the jQuery features.
+
+Then another script must follow the jQuery script which will have the path to this file.js
+
+<b>script src="./style.js"></script></b>
 
 <b>Here is the jQuery used to modify this website</b>
 

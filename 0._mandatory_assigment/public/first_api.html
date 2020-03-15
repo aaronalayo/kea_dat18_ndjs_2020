@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basics</title>
+    <title>First API</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
 <body>
     <header>
+      <a href="index.html" type="button" id="index-button" class="btn btn-primary">index</a>
         <h1>Welcome to Aaron's Documentation</h1>
         <h1>First API</h1>
     </header>
     <section>
         <nav>
             <h2>Topics</h2>
-            <h3>Introduction</h3>
             <ol>
                 <li><a href="basics">Basics</a></li>
                 <li><a href="strings">Strings</a></li>
@@ -24,16 +24,17 @@
                 <li><a href="arrays">Arrays</a></li>
                 <li><a href="functions">Functions</a></li>
             </ol>
-          
-            <h3>jQuery</h3>
-            <ol>
-                <li><a href ="jquery">jQuery</a></li>
-            </ol>
-           
-
+              <h2>jQuery</h2>
+              <ol>
+                  <li><a href="jquery">jQuery</a></li>
+              </ol>
+              <h2>HTTP Request</h2>
+              <ol>
+                  <li><a href="httprequests">HTTP Requests</a></li>
+              </ol>
             
-                  <a href="functions" type="button" class="btn btn-primary">Previous</a>
-                  <a href="jquery" type="button" id="nav-button2" class="btn btn-primary">Next</a>
+                  <a href="functions" type="button" id="nav-button1" class="btn btn-primary">previous</a>
+                  <a href="jquery" type="button" id="nav-button2" class="btn btn-primary">next</a>
              
         </nav>
        
@@ -41,9 +42,12 @@
             
             
 <pre>   
-    <b>First API</b>
-    
-    <b>Steps to setup the application:</b>
+<b>First API</b>
+The way to construct a web API is to follow the RESTful approach (referred to as a REST API).
+REST APIs are resource-based interfaces. On the web this means that data resources 
+(typically formatted in JSON, or XML) are represented by URIs (paths) accessed via HTTP.
+
+<b>Steps to setup the application:</b>
 
     - Open a terminal and run command: <b>cd</b> to navigate to the folder that will contain the application. 
     Ex: cd /kea/node
@@ -58,56 +62,109 @@
     Just follow the steps to fill the information contained in the package.
 
     Still in the application folder, Install modules:
-    For example, express, nodemon, budo and cross-env by running the following commands:
+    For example, express, nodemon, and cross-env by running the following commands:
     npm install express
     npm install nodemon
     npm install cross-env
+
     Now all the dependencies needed for the application will be installed and referenced in the <b>package.json</b>.
     
     <b>package.json should look like this</b>
 
     {
-        "name": "nodejs_mandatory_assigment",
-        "version": "1.0.0",
-        "description": "Website that contains documentation of the learning of NodeJS",
-        "main": "app.js",
-        "scripts": {
-          "start": "cross-env PORT=8080 node app.js",
-          "start-dev": "cross-env PORT=3000 nodemon app.js",
-          "test": "echo \"Error: no test specified\" && exit 1"
-        },
-        "keywords": [
-          "doc",
-          "documentation",
-          "learning",
-          "assignment"
-        ],
-        "author": "Aaron ALAYO",
-        "license": "ISC",
-        "dependencies": {
-          "budo": "^11.6.3",
-          "cross-env": "^7.0.2",
-          "express": "^4.17.1",
-          "nodemon": "^2.0.2"
-        }
+      "name": "nodejs_mandatory_assigment",
+      "version": "1.0.0",
+      "description": "Website that contains documentation of the learning of NodeJS",
+      "main": "app.js",
+      "scripts": {
+        "start": "cross-env PORT=80 node app.js",
+        "start-dev": "cross-env PORT=3000 nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "keywords": [
+        "doc",
+        "documentation",
+        "learning",
+        "assignment"
+      ],
+      "author": "Aaron ALAYO",
+      "license": "ISC",
+      "dependencies": {
+        "cross-env": "^7.0.2",
+        "express": "^4.17.1",
+        "nodemon": "^2.0.2"
       }
+    }
+
 <b>Modules:</b>
+All these modules can be installed with the command:
+
+npm install <b>module name</b>
+
+this will insatll the module on your application
+
+Another option is to install it globally so it can be accessed by any application.
+It is done by adding <b>- g</b> to the command.
+
+npm install <b>module name</b> -g
 
 <b>- Express</b>
 Express is a minimal and flexible Node.js web application framework 
 that provides a robust set of features for web and mobile applications.
 
+<b>- Nodemon</b>
+nodemon is a tool that helps develop node.js based applications by automatically 
+restarting the node application when file changes in the directory are detected.
+
+<b>- cross-env</b>
+cross-env makes it so you can have a single command without worrying about setting 
+or using the environment variable properly for the platform. Just set it like you would 
+if it's running on a POSIX system, and cross-env will take care of setting it properly.
+
+<b>"scripts": {
+  "start": "cross-env PORT=8080 node app.js",
+  "start-dev": "cross-env PORT=3000 nodemon app.js",</b>
+
+
+<b>The app.js file</b>
+
+When running the <b>npm init</b> command the package created will generate the file <b>app.js</b>
+which is the main entry point to the resulting application.
+This file will contain all the main functions.
+
+In the file the first thing to do is create a const variable <b>express</b> 
+which will instantiate <b>express</b> by using the method <b>require()</b>. 
+This will load the <b>express</b> module.
+
+<b>const express = require("express");</b>
+
+Then create another const variable <b>app</b> 
+This means that now the application will be able to use the express module.
+
+<b>const app = express();</b>
+ 
+<b>PORT</b>
+The last step before start coding is to assign the port where the application will run.
+During production the port 3000 will be used, this port is only for the server side of the application.
+For the client side, usually the port used is <b>80</b>.
+
+In order to assign the port, create a new const variable, usually called <b>server</b> 
+where the app will listen. 
+Also, create a condition inside the function to tell the user if the app is listening on the 
+port or if there is an error when running the server.
+
+<b>const server = app.listen(3000, (error) => {
+  if(error){
+      console.log("error running the server");
+  } 
+      console.log("App listening on port: ", server.address().port);
+});</b>
     
 </pre>
         </article>
       
     
     </section>
-      
-      
-    <!-- <div class="footer">
-        <p>KEA - Dat18i</p>
-      </div> -->
      
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="./style.js"></script>
