@@ -25,6 +25,7 @@ Tools used:
 - Postman
 - Git
 - Terminal
+- npmjs.com
 
 
 In order to run the application:

@@ -16,8 +16,9 @@
   "author": "Aaron ALAYO",
   "license": "ISC",
   "dependencies": {
-    "cross-env": "^7.0.1",
-    "express": "^4.17.1",
-    "nodemon": "^2.0.2"
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
   }
 }

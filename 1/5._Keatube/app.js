@@ -7,18 +7,36 @@ app.use(express.urlencoded({extended:false})); //to get response fromm
 // parse application/json
 app.use(express.json());//to sumit form
 
-app.use(express.static('public'));
-app.use(express.static('videos'));
-
 console.log("This is from the enviroment variables",);
 
-app.get("/video/:videoid", (req, res) => {
+app.use(express.static('public'));
+app.use(express.static('videos'));
+app.use(express.static('player'));
 
-    return res.sendFile(__dirname + "/public/video.html");
+
+const fs = require('fs');
+
+const navbarPage = fs.readFileSync(__dirname + '/public/navbar/navbar.html', "utf8");
+const footerPage = fs.readFileSync(__dirname + '/public/footer/footer.html', "utf8");
+const indexPage = fs.readFileSync(__dirname + '/public/index/index.html', "utf8");
+const playerPage = fs.readFileSync(__dirname + '/public/player/player.html', "utf8");
+
+
+app.get("/", (req, res) => {
+    return res.send(navbarPage + indexPage + footerPage);
 });
 
+app.get("/player/:videoid", (req, res) => {
+    return res.send(navbarPage + playerPage + footerPage);
+});
 
+//import routes
+const videoRoute = require("./routes/videoRoute");
 
+//setup routes
+app.use(videoRoute);
+
+//console.log(videoRoute)
 
 const port = process.env.PORT ? process.env.PORT : 3000;
 
