@@ -22,5 +22,3 @@ $.get(`/videos/${videoId}`)
 
 
 
-
-

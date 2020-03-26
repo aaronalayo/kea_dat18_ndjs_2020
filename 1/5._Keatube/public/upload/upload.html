@@ -1,0 +1,17 @@
+<script src="/upload/upload.js"></script>
+<h1>Upload</h1>
+    
+
+  <form action="/videos" method="POST" enctype="multipart/form-data" onsubmit="validateForm()">
+    <ul>
+    <input type="file" name="video" accept="video/*" />
+    <li><input  name= "title" placeholder="title" /></li>
+    <li><textarea name="description" placeholder="description" rows ="6"></textarea></li>
+    <li><input name="thumbnail" placeholder="thumbnail"/></li>
+    <li><input name="category" placeholder="category"/></li>
+    <li><input name="tags" placeholder="tags"/></li>
+    <li><button type="submit">Submit</button</li> 
+    </ul>
+
+    
+  </form>

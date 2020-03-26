@@ -20,7 +20,7 @@ const navbarPage = fs.readFileSync(__dirname + '/public/navbar/navbar.html', "ut
 const footerPage = fs.readFileSync(__dirname + '/public/footer/footer.html', "utf8");
 const frontPage = fs.readFileSync(__dirname + '/public/frontpage/frontpage.html', "utf8");
 const playerPage = fs.readFileSync(__dirname + '/public/player/player.html', "utf8");
-const uploadPage = fs.readFileSync(__dirname + '/upload/upload.html', "utf8");
+const uploadPage = fs.readFileSync(__dirname + '/public/upload/upload.html', "utf8");
 
 
 app.get("/", (req, res) => {
