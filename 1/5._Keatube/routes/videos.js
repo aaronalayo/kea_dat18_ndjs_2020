@@ -29,6 +29,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage});
 
 
+
 const videos = [{
     title: "Ocean Waves",
     description: "Watch the waves and enjoy",
@@ -58,8 +59,38 @@ router.get("/videos/:videoId", (req, res) => {
 });
 
 router.post("/videos", upload.single('video'), (req, res) => {
+
+    let errors= [];
+
+
+    //1. server side validation
+    const video = {
+        fileName: req.file.filename,
+        title: req.body.title || "",
+        description: req.body.description  || "",
+        thumbnail: "",//to do
+        category: req.body.category || "unknown", //to do : check if it belongs to accepted categories
+        tags: req.body.tags.split(/[,\s]\s*/),
+        uploadDate: new Date()
+    };
+
+
     
-    return res.redirect("/")
+    if(video.title.length < 8 || video.title.length > 64) {
+        errors.push("Title or not between 8 and 64.");
+    };
+
+    if (video.description.length > 2048) {
+        errors.push("The description can't be longer than 2048 chars");
+    };
+
+    if (errors.length > 0) {
+        return res.send({response: errors});
+    } else {
+        videos.push(video);
+        return res.redirect("/player/"+ video.fileName);
+
+    } 
 });
 
 
