@@ -1,4 +1,7 @@
 **/videos/*
+
+mysqlCredentials
+
 # Logs
 logs
 *.log

@@ -1,0 +1,21 @@
+Relational Database vs NoSQL
+
+//MongoDB
+
+
+collections: furniture
+[
+    {
+        "key": "value"
+    },
+    {
+        "price": 20.00
+    }
+]
+
+//create database: use mydb
+
+db.createCollection("buildings")//create collection
+db.buildings.find()// find something
+db.buildings.find({type: {$exists: true}})
+db.buildings.find({}, {type: 1, _id:0})//by field

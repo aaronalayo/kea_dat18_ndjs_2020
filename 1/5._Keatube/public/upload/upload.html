@@ -1,10 +1,12 @@
 <script src="/upload/upload.js"></script>
+
+
 <h1>Upload</h1>
     
-
+  
   <form action="/videos" method="POST" enctype="multipart/form-data" name="videoupload" onsubmit="return validateForm()">
-    
-    <input  name= "title" placeholder="title" />
+  
+    <input name= "title" id="title" placeholder="title">
     <textarea name="description" placeholder="description" rows ="6"></textarea>
     <select name="category">
         <option value="comedy">Comedy</option>
@@ -22,7 +24,25 @@
     <input name="tags" placeholder="coma-separated tags"/>    
     <input type="file" name="video" accept="video/*" onchange="handleFileUpload(this.files)"/>
 
-    <button type="submit">Submit</button>
+    <button type="submit" id="submit">Submit</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.2/sweetalert2.all.min.js"></script>
 
-    
+  <script>
+
+$(submit).click(function() {
+    var title = $(title).val
+    if (title.length < 8 || title.length > 64) {
+    Swal.fire({
+icon: 'error',
+title: 'Oops...',
+text: 'Title must be between 8 and 64 characters!',
+footer: '<a href>Why do I have this issue?</a>'
+})
+    return false;
+    }
+});
+   
+  </script>
   </form>
+
+

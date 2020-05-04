@@ -12,3 +12,93 @@
     font-size: 1.2em;
 }
 
+.flash-comments form{
+    margin-bottom: 0px;
+}
+
+.flash-comments .comment-form{
+    display: flex;
+    padding: 6px;
+    border-bottom:5px solid #eaeaea;
+}
+
+.comment-form .left-side{
+    flex: 5;
+    display: grid;
+    flex-direction: column;
+    padding-right: 5px;
+}
+
+.comment-form .left-side .row1{
+    flex: 5;
+    display: flex;
+    align-content: center;
+   
+}
+
+.comment-form .left-side .row1 input{
+    height: 32px;
+    width: 10%;
+}
+
+.comment-form .left-side .row1 textarea{
+    height: 42px;
+    margin-top:8px;
+}
+
+.comment-form .left-side .row2{
+    flex: 5;
+    display: flex;
+    align-content: center;
+    padding-top: 10px;
+}
+
+.comment-form .left-side .row2 input{
+    height: 32px;
+    width: 10%;
+}
+
+.comment-form .left-side .row2 textarea{
+    height: 42px;
+    margin-top:8px;
+}
+
+
+.comment-form .left-side .row3{
+    flex: 5;
+    display: flex;
+    align-content: center;
+}
+
+.comment-form .left-side .row3 input{
+    height: 32px;
+    width: 10%;
+}
+
+.comment-form .left-side .row3 textarea{
+    height: 80px;
+    margin-top:8px;
+}
+
+.comment-form .right-side{
+    flex:1;
+    display: flex;
+    justify-content: center;
+}
+
+.comment-form .right-side button{
+    white-space: pre-wrap;
+}
+
+.comment-form textarea{
+    width:40%;
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+    color: black;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    left: 20px;
+    
+}

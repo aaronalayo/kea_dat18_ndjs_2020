@@ -4,6 +4,7 @@ const router = require("express").Router();
 const crypto = require("crypto");
 
 
+
 const uuid = require('uuid').v4;
 const multer = require('multer')
 const storage = multer.diskStorage({
@@ -77,9 +78,10 @@ router.post("/videos", upload.single('video'), (req, res) => {
 
     
     if(video.title.length < 8 || video.title.length > 64) {
-        errors.push("Title or not between 8 and 64.");
+        errors.push("Title can't be between 8 and 64.");
+        
     };
-
+    
     if (video.description.length > 2048) {
         errors.push("The description can't be longer than 2048 chars");
     };

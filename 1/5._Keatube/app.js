@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+
+
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({extended:false})); //to get response fromm
 
@@ -33,7 +35,9 @@ app.get("/player/:videoid", (req, res) => {
 
 app.get("/upload", (req,res) => {
     return res.send(navbarPage + uploadPage + footerPage);
+    
 });
+
 
 //import routes
 const videoRoute = require("./routes/videos");
@@ -41,9 +45,11 @@ const videoRoute = require("./routes/videos");
 //setup routes
 app.use(videoRoute);
 
+
+
 //console.log(videoRoute)
 
-const port = process.env.PORT ? process.env.PORT : 3000;
+const port = process.env.PORT ? process.env.PORT : 5000;
 
 const server = app.listen(port, (error) => {
     if(error){
