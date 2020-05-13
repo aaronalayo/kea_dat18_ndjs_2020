@@ -16,7 +16,6 @@ route.post("/login", async (req, res)=> {
     //2. Check user match in db
     try {
     const user = await User.query().select().where({'username': username}).then(function (user) {
-       
         if (!user) {
             res.status({ error: 'Invalid username or password.'});
         } else {
@@ -25,6 +24,7 @@ route.post("/login", async (req, res)=> {
                 console.log(result);  
                 if (result == true) {
                      //4. sessions
+                    req.session.user = user;
                     return res.redirect('/dashboard');
                 } else {
                     return res.redirect('/login')
@@ -96,9 +96,8 @@ route.post("/signup", async (req, res)=> {
 
 
 route.post("/signout", (req, res)=> {
-    // req.session.destroy(function(err) {
-    //     // cannot access session here
-    //   });
+    req.session.destroy();
+    res.redirect('/');
     return res.send({response:"OK"});
 });
 

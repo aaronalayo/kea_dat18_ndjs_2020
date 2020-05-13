@@ -1,6 +1,7 @@
 const express = require("express")//instantiate;
 
 const app = express();
+const User = require('./model/User.js');
 
 // parse application/json
 app.use(express.urlencoded({extended:false})); //to get response from
@@ -8,12 +9,22 @@ app.use(express.urlencoded({extended:false})); //to get response from
 app.use(express.json());//to sumit form
 
 const session = require('express-session');
+// app.use(session({
+//     secret: require('./config/mysqlCredentials.js').sessionSecret,
+//     resave: false,
+//     saveUninitialized: true,
+// }));
 app.use(session({
+    cookieName: 'session',
     secret: require('./config/mysqlCredentials.js').sessionSecret,
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+    httpOnly: true,
+    secure: true,
+    ephemeral: true,
     resave: false,
-    saveUninitialized: true,
-}));
-
+    saveUninitialized: true
+  }));
 //JWT client-server client to store the JWT
 //Session lives entirely on the server
 
@@ -49,16 +60,56 @@ const knex = Knex(knexFile.development);
 Model.knex(knex);
 
 
+app.use(async (req, res, next) => {
+
+    
+  if (req.session && req.session.user) {
+    const username = req.session.user[0].username;  
+    try {
+      await User.query()
+        .select()
+        .where({ 'username': username })
+        .then(function (user) {
+          if (user) {
+            req.user = user;
+            delete req.user.password; // delete the password from the session
+            req.session.user = user; //refresh the session value
+            res.locals.user = user;
+          }
+          // finishing processing the middleware and run the route
+          next();
+        });
+    } catch (error) {
+      return res
+        .status(500)
+        .send({ response: "Something went wrong with database" });
+    }
+  } else {
+    next();
+  }
+});
+
+
+function requireLogin (req, res, next) {
+  if (!req.user) {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+};
 
 const fs = require('fs');
 
 const dashboardPage = fs.readFileSync(__dirname + '/public/dashboard.html', "utf8");
 const loginPage = fs.readFileSync(__dirname + '/public/login.html', "utf8");
 
-app.get("/dashboard", (req, res) => {
 
-    res.send(dashboardPage);
-});
+
+    app.get("/dashboard", requireLogin, (req, res) => {
+      res.send(dashboardPage);
+    });
+   
+
 app.get("/login", (req, res) => {
 
     res.send(loginPage);
@@ -100,20 +151,6 @@ app.use(usersRoute);
 //  signin - POST
 //  signup - POST
 //  logout - GET
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
