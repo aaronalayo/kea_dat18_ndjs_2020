@@ -7,12 +7,38 @@ app.use(express.urlencoded({extended:false})); //to get response from
 // parse application/x-www-form-urlencoded
 app.use(express.json());//to sumit form
 
+const session = require('express-session');
+app.use(session({
+    secret: require('./config/mysqlCredentials.js').sessionSecret,
+    resave: false,
+    saveUninitialized: true,
+}));
 
+//JWT client-server client to store the JWT
+//Session lives entirely on the server
+
+const rateLimit = require("express-rate-limit");
+ 
+// Enable if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
+// see https://expressjs.com/en/guide/behind-proxies.html
+// app.set('trust proxy', 1);
+ 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 8 // limit each IP to 8 requests per windowMs
+});
+ 
+//  apply to all requests
+app.use("/login",limiter);
+app.use("/signup", limiter);
+app.use("/dashboard", limiter);
+app.use("/login", limiter)
 
 
 // Setuo Objection + Knex
 
 const {Model} = require('objection');
+
 // const Model = require('objection').Model;
 
 const Knex = require('knex');
@@ -21,6 +47,22 @@ const knexFile = require('./knexfile.js')
 const knex = Knex(knexFile.development);
 
 Model.knex(knex);
+
+
+
+const fs = require('fs');
+
+const dashboardPage = fs.readFileSync(__dirname + '/public/dashboard.html', "utf8");
+const loginPage = fs.readFileSync(__dirname + '/public/login.html', "utf8");
+
+app.get("/dashboard", (req, res) => {
+
+    res.send(dashboardPage);
+});
+app.get("/login", (req, res) => {
+
+    res.send(loginPage);
+});
 
 /**Temp */
 
@@ -43,9 +85,12 @@ app.get("/", async (req, res) => {
 
 
 /** Add routes */
+//Rest api for models
 const authRoute = require('./routes/auth.js');
+const usersRoute = require('./routes/users.js');
 
 app.use(authRoute);
+app.use(usersRoute);
 
 //auth routes
 

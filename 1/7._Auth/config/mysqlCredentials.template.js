@@ -1,5 +1,6 @@
 module.exports = {
     database: 'mydb',
     user: 'username',
-    password: 'password'
+    password: 'password',
+    sessionSecret: 'express session secret'
 };

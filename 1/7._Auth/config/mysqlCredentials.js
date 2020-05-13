@@ -1,5 +1,6 @@
 module.exports = {
     database: 'node_a_users',
     user: 'root',
-    password: 'gambetta'
+    password: 'gambetta',
+    sessionSecret: 'smarting'
 };

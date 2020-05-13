@@ -1,8 +1,42 @@
 const route = require('express').Router();
-const User = require('../model/User.js')
+const User = require('../model/User.js');
+const Role = require('../model/Role.js');
 
-route.post("/login", (req, res)=> {
-    return res.send({response:"OK"});
+
+const bcrypt = require('bcrypt');
+const saltRounds = 12;
+
+
+
+
+route.post("/login", async (req, res)=> {
+    //1. Retrieve login details and validate
+    const { username, password} = req.body;  
+
+    //2. Check user match in db
+    try {
+    const user = await User.query().select().where({'username': username}).then(function (user) {
+       
+        if (!user) {
+            res.status({ error: 'Invalid username or password.'});
+        } else {
+           //3. Bcrypt compare
+            bcrypt.compare(password, user[0].password).then((result)=> {
+                console.log(result);  
+                if (result == true) {
+                     //4. sessions
+                    return res.redirect('/dashboard');
+                } else {
+                    return res.redirect('/login')
+                    }
+                
+            })
+        }
+    }) 
+    } catch(error) {
+    return res.status(500).send({response: "Something went wrong with database"});
+
+}
 });
 
 route.post("/signup", async (req, res)=> {
@@ -15,38 +49,33 @@ route.post("/signup", async (req, res)=> {
 
     if (username && password && isPasswordTheSame) {
         if (password.length < 8 ) {
-
+            
             return res.status(400).send({response: "Password does not fulfill the requirements"});
 
         } else {
             try {
-                
                 // 1.check if username exist
                 const userFound = await User.query().select().where({'username': username}).limit(1);
                 if(userFound.length > 0){
+                    
                     // 2.do if else check if it exist and give response
-                    return res.send(400).send({response: "User already exist"});
-                } else {
-                    //Todo implement Role model and set relations Read link in slack
-                    // 3.insert in db
-                    // const role = await User.query().select().where('role':'USER')
+                    return res.status(400).send({response: "User already exist"});
+                    
+                } else {         
+                    const defaultUserRole = await Role.query().select().where({role: 'USER'});
+                    
+                    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
                     const createdUser = await User.query().insert({
                         username: username, 
-                        password: password,
-                        roleId: 2
-                    });
+                        password: hashedPassword,
+                        // 3.insert in db
+                        roleId: defaultUserRole[0].id
+                    });       
 
                     return res.send({response: `User has been created: ${createdUser.username}`});
                 }
                     
-                
-       
-                    
-            
-            
-            
-               
-                
 
             } catch(error) {
                 return res.status(500).send({response: "Something went wrong with database"});
@@ -65,7 +94,11 @@ route.post("/signup", async (req, res)=> {
     }
 });
 
+
 route.post("/signout", (req, res)=> {
+    // req.session.destroy(function(err) {
+    //     // cannot access session here
+    //   });
     return res.send({response:"OK"});
 });
 
