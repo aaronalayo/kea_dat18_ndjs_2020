@@ -1,0 +1,36 @@
+<div class="container row">
+    <div class="jumbotron col-sm-4 pull-center">
+        <table id="tableData" class="table table-fixed">
+            <thead>
+              <tr>
+              </tr>
+            </thead>
+            <tbody class="tbody" >
+            </tbody>
+    </div>
+</div>
+
+<!-- $(document).ready(() => {
+
+    $.ajax({
+        url: "http://localhost:2000/list", 
+        method: 'GET',
+        success: function(response){
+            if(response.rows.length > 0){
+                for(let index = 0; index < response.rows.length; index++) {
+                    var newRow = $("<tr>");
+                    var cols = "";
+                    var firstname = '';
+                    var lastname = '';
+                    var gender = '';
+                    cols += '<td> '+ response.rows[index].username +'</td>';
+                    cols += '<td> '+ response.rows[index].password +'</td>';
+                    cols += '<td> '+ response.rows[index].role+'</td>';                
+                    newRow.append(cols);
+                    $("#tableData .tbody").append(newRow);
+                }  
+    
+            }
+        }
+    })
+    }) -->

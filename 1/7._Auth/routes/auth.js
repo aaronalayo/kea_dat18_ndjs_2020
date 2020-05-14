@@ -21,17 +21,22 @@ route.post("/login", async (req, res)=> {
         } else {
            //3. Bcrypt compare
             bcrypt.compare(password, user[0].password).then((result)=> {
-                console.log(result);  
+                // console.log(result);  
                 if (result == true) {
                      //4. sessions
                     req.session.user = user;
-                    return res.redirect('/dashboard');
+                    if (user[0].role == 'admin') {
+                        return res.redirect('/admin');
+                    } else {
+                        return res.redirect('/dashboard');
+                    }
+                   
                 } else {
                     return res.redirect('/login')
                     }
                 
             })
-        }
+        } 
     }) 
     } catch(error) {
     return res.status(500).send({response: "Something went wrong with database"});
@@ -72,13 +77,14 @@ route.post("/signup", async (req, res)=> {
                         // 3.insert in db
                         roleId: defaultUserRole[0].id
                     });       
-
-                    return res.send({response: `User has been created: ${createdUser.username}`});
+                    return res.send(`<h1>User ${createdUser.username} has been created</h1>`)
+                    //return res.send({response: `User has been created: ${createdUser.username}`});
                 }
                     
 
             } catch(error) {
-                return res.status(500).send({response: "Something went wrong with database"});
+                return res.write(`<h1>Something went wrong with database</h1>`)
+                // return res.status(500).send({response: "Something went wrong with database"});
 
             }
             
@@ -95,10 +101,14 @@ route.post("/signup", async (req, res)=> {
 });
 
 
-route.post("/signout", (req, res)=> {
-    req.session.destroy();
-    res.redirect('/');
-    return res.send({response:"OK"});
+route.get("/logout", (req, res, next) => {
+    req.session.destroy((err) => {
+        if(err) {
+            return console.log(err);
+        }
+        res.redirect('/');
+    });
+
 });
 
 

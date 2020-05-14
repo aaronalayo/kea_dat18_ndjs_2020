@@ -1,7 +1,0 @@
-exports.up = function(knex) {
-    return knez.schema
-        .createTable('users');
-}
-
-
-exports.down = 

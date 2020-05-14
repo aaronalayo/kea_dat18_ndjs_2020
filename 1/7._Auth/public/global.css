@@ -1,0 +1,19 @@
+#copyright-paragraph {
+    font-size: 1.0em;
+    bottom: 10px;
+}
+
+#logo {
+    width:30%;
+    
+}
+
+
+#main-content {
+    min-height: calc (100vh - 80px);
+}
+
+footer {
+    height: 100px;
+    bottom: 1900px;
+}
