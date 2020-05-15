@@ -6,17 +6,20 @@ const Role = require('../model/Role.js');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
 
+const sendEmail = require("../mailer")
 
 
-
-route.post("/login", async (req, res)=> {
+route.post("/login", async (req, res, next)=> {
     //1. Retrieve login details and validate
     const { username, password} = req.body;  
 
     //2. Check user match in db
     try {
     const user = await User.query().select().where({'username': username}).then(function (user) {
+        // console.log(user);
+        
         if (!user) {
+            
             res.status({ error: 'Invalid username or password.'});
         } else {
            //3. Bcrypt compare
@@ -25,14 +28,14 @@ route.post("/login", async (req, res)=> {
                 if (result == true) {
                      //4. sessions
                     req.session.user = user;
-                    if (user[0].role == 'admin') {
-                        return res.redirect('/admin');
-                    } else {
-                        return res.redirect('/dashboard');
-                    }
-                   
+                    
+                    res.render('login', {msg: 'Loging succeded'});
+                    next();
+                    res.redirect('/dashboard');  
+                                 
                 } else {
                     return res.redirect('/login')
+
                     }
                 
             })
@@ -70,15 +73,21 @@ route.post("/signup", async (req, res)=> {
                     const defaultUserRole = await Role.query().select().where({role: 'USER'});
                     
                     const hashedPassword = await bcrypt.hash(password, saltRounds);
-
+                    // 3.insert in db
                     const createdUser = await User.query().insert({
                         username: username, 
                         password: hashedPassword,
-                        // 3.insert in db
+                        
                         roleId: defaultUserRole[0].id
-                    });       
+                    }); 
+                    
+                    const mailTo= 'editoraaron@gmail.com';
+                    const newUser = createdUser.username;
+                   
+                    sendEmail(mailTo, 'User account created', "Hello " + newUser + " your account has been created.");   
                     return res.send(`<h1>User ${createdUser.username} has been created</h1>`)
-                    //return res.send({response: `User has been created: ${createdUser.username}`});
+               
+                    // return res.send(`User has been created: ${createdUser.username}`);
                 }
                     
 

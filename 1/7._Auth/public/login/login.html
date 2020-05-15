@@ -1,7 +1,11 @@
 
-
     <div class="container row">
+        <div id="msg">
+            
+        </div>
+        
         <div class="jumbotron col-sm-4 pull-center">
+            
             <form action="/login" method="post">
                 <div>
                     <label>Username:</label>
@@ -13,6 +17,19 @@
                 </div>
                 <div>
                     <input class="btn btn-primary" type="submit" value="Login"/>
+                    
                 </div>
-            </form>                  
-        </div>          
+            </form>   
+        </div>    
+   
+                  
+        <script type="text/javascript">
+            let url="http://localhost:2000/login";
+            fetch(url).then(response => response.json())
+            .then( (result) => {
+                console.log('success:', result)
+                let div=document.getElementById('msg');
+                div.innerHTML=`message: ${result.message}`;
+            })
+            .catch(error => console.log('error:', error));
+        </script>

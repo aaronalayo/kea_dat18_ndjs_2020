@@ -43,7 +43,7 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 25, // limit each IP to 8 requests per windowMs
 });
-
+app.set('view engine', 'pug');
 app.use(express.static("public"));
 
 //  apply to all requests
